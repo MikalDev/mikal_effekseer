@@ -109,7 +109,7 @@ P_C.Type = class extends C3.SDKTypeBase {
         const P = renderer._matP;
 
         this.effekseerManager.setMVPMatrices(MV, P);
-        this.effekseerManager.draw(renderer);
+        this.effekseerManager.draw(tickCount);
         this.runtime.UpdateRender();
     }
 

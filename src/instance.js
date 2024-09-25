@@ -50,7 +50,7 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
                     this.rotationY,
                     this.rotationZ
                 );
-                // this.playing = true;
+                this.playing = true;
             }
         }
 
@@ -91,6 +91,7 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
                 this.rotationY,
                 this.rotationZ
             );
+            this.playing = true;
         }
 
         _SetFrame(frame) {
@@ -111,6 +112,11 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
             return this.path ? this.path : "";
         }
 
+        _OnFinished() {
+            console.log("_OnFinished called");
+            return true;
+        }
+
         Tick() {
             const handle = this.handle;
             if (handle) {
@@ -124,6 +130,10 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
                     this.rotationY,
                     this.rotationZ
                 );
+                if (this.playing && !handle.exists) {
+                    this.playing = false;
+                    this.Trigger(C3.Plugins.mikal_effekseer.Cnds.OnFinished);
+                }
             }
         }
 

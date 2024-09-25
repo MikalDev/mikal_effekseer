@@ -65,10 +65,10 @@ class EffekseerManager {
         handle.stopEffect();
     }
 
-    draw() {
+    draw(tickCount) {
         if (this.context) {
-            this.update(1);
-            this.updateHandles(1);
+            this.update(tickCount % 2);
+            // this.updateHandles(1);
             this.context.draw();
         }
     }

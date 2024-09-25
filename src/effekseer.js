@@ -9604,32 +9604,36 @@ var effekseer = (function () {
                 value: function save() {
                     // glGetIntegerv(GL_ELEMENT_ARRAY_BUFFER_BINDING) is wrong with Emscripten (Why?)
                     // glGetIntegerv(GL_TEXTURE_BINDING_2D) is wrong with Emscripten (Why?)
-
-                    this.current_vbo = this._gl.getParameter(
-                        this._gl.ARRAY_BUFFER_BINDING
-                    );
-                    this.current_ibo = this._gl.getParameter(
-                        this._gl.ELEMENT_ARRAY_BUFFER_BINDING
-                    );
+                    if (!this.current_vbo)
+                        this.current_vbo = this._gl.getParameter(
+                            this._gl.ARRAY_BUFFER_BINDING
+                        );
+                    if (!this.current_ibo)
+                        this.current_ibo = this._gl.getParameter(
+                            this._gl.ELEMENT_ARRAY_BUFFER_BINDING
+                        );
                     if (this.ext_vao != null) {
                         this.current_vao = this._gl.getParameter(
                             this.ext_vao.VERTEX_ARRAY_BINDING_OES
                         );
                         this.ext_vao.bindVertexArrayOES(this.effekseer_vao);
                     } else if (this.isWebGL2VAOEnabled) {
-                        this.current_vao = this._gl.getParameter(
-                            this._gl.VERTEX_ARRAY_BINDING
-                        );
+                        if (!this.current_vao)
+                            this.current_vao = this._gl.getParameter(
+                                this._gl.VERTEX_ARRAY_BINDING
+                            );
                         this._gl.bindVertexArray(this.effekseer_vao);
                     }
-                    this.current_active_texture_id = this._gl.getParameter(
-                        this._gl.ACTIVE_TEXTURE
-                    );
+                    if (!this.current_active_texture_id)
+                        this.current_active_texture_id = this._gl.getParameter(
+                            this._gl.ACTIVE_TEXTURE
+                        );
                     for (var i = 0; i < this.restore_texture_slot_max; i++) {
                         this._gl.activeTexture(this._gl.TEXTURE0 + i);
-                        this.current_textures[i] = this._gl.getParameter(
-                            this._gl.TEXTURE_BINDING_2D
-                        );
+                        if (!this.current_textures[i])
+                            this.current_textures[i] = this._gl.getParameter(
+                                this._gl.TEXTURE_BINDING_2D
+                            );
                     }
                 },
             },
