@@ -5,6 +5,8 @@ var gl = undefined,
     moduleOrPromise = undefined,
     splitted_path = undefined,
     upvecVector = undefined;
+var parameterCache = new Map()
+
 function _regeneratorRuntime() {
     "use strict";
     /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime =
@@ -5367,7 +5369,13 @@ var effekseer_native = (function () {
                     break;
             }
             if (ret === undefined) {
-                var result = GLctx.getParameter(name_);
+                let result
+                if (!parameterCache.has(name_)) {
+                    result = GLctx.getParameter(name_);
+                    parameterCache.set(name_, result);
+                } else {
+                    result = parameterCache.get(name_);
+                }
                 switch (_typeof2(result)) {
                     case "number":
                         ret = result;
@@ -10688,8 +10696,18 @@ if (typeof exports !== "undefined") {
     exports = effekseer;
 }
 
-export default effekseer;
+    globalThis.effekseerWasmLoaded = new Promise((resolve, reject) => {
+        effekseer.initRuntime(
+            "./effekseer.wasm",
+            () => {
+                console.log("Effekseer runtime initialized successfully");
+                resolve(true);
+            },
+            (error) => {
+                console.error("Failed to initialize Effekseer runtime:", error);
+                reject(error);
+            }
+        );
+    });
 
-if (!globalThis.Effekseer) {
-    globalThis.Effekseer = effekseer;
-}
+export default effekseer;

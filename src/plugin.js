@@ -77,10 +77,14 @@ P_C.Type = class extends C3.SDKTypeBase {
     _checkWebGLRendererAndInit() {
         const checkInterval = setInterval(() => {
             const renderer = this.runtime.GetWebGLRenderer();
-            if (renderer) {
+            if (renderer && globalThis.effekseerWasmLoaded) {
                 console.log("renderer found");
                 clearInterval(checkInterval);
                 this.init(renderer);
+            } else {
+                if (renderer && !globalThis.effekseerWasmLoaded) {
+                    console.log("renderer found but effekseerWasm not loaded");
+                }
             }
         }, 5);
     }
@@ -91,8 +95,7 @@ P_C.Type = class extends C3.SDKTypeBase {
         this.loading = true;
         console.log("init0");
         await this.effekseerManager.initialize(
-            renderer._gl,
-            "./effekseer.wasm"
+            renderer._gl
         );
         console.log("init1");
         this.loaded = true;

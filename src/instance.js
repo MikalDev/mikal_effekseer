@@ -98,14 +98,14 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
             if (!this.effect || !this.handle) {
                 return;
             }
-            this.effekseerManager.setEffectFrame(this.handle, frame);
+            this.sdkType.effekseerManager.setEffectFrame(this.handle, frame);
         }
 
         _Stop() {
             if (!this.effect || !this.handle) {
                 return;
             }
-            this.effekseerManager.stopEffect(this.handle);
+            this.sdkType.effekseerManager.stopEffect(this.handle);
         }
 
         _Path() {

@@ -4,7 +4,7 @@ const Config = {
     addonType: "plugin",
     id: "mikal_effekseer",
     name: "effekseer",
-    version: "1.1.0",
+    version: "1.2.2",
     category: "3d",
     // "data-and-storage",
     // "form-controls",
@@ -40,7 +40,8 @@ const Config = {
     fileDependencies: [
         {
             filename: "effekseer.js", // no need to include "c3runtime/" prefix
-            type: "external-runtime-script",
+            type: "copy-to-output",
+            fileType: "application/javascript",
         },
         {
             filename: "effekseer.wasm", // no need to include "c3runtime/" prefix

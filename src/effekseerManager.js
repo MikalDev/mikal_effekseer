@@ -8,11 +8,7 @@ class EffekseerManager {
         this.handles = {};
     }
 
-    async initialize(gl, wasmUrl) {
-        // effekseer.setImageCrossOrigin("anonymous");
-        await new Promise((resolve) => {
-            effekseer.initRuntime(wasmUrl, resolve);
-        });
+    async initialize(gl) {
         this.context = effekseer.createContext();
         this.context.setRestorationOfStatesFlag(true);
         this.gl = gl;
@@ -34,7 +30,7 @@ class EffekseerManager {
     }
 
     stopEffect(handle) {
-        this.context.stopEffect(handle);
+        handle.stop();
     }
 
     setMVPMatrices(MV, P) {
@@ -60,14 +56,9 @@ class EffekseerManager {
         handle.setFrame(frame);
     }
 
-    stopEffect(handle) {
-        if (!handle) return;
-        handle.stopEffect();
-    }
-
     draw(tickCount) {
         if (this.context) {
-            this.update(tickCount % 2);
+            this.update(0);
             // this.updateHandles(1);
             this.context.draw();
         }
