@@ -146,6 +146,17 @@ function getInstanceJs(parentClass, scriptInterface, addonTriggers, C3) {
             sdkType.Draw(renderer, tickCount);
         }
 
+        Release() {
+            super.Release();
+            this.sdkType.effekseerManager.releaseEffect(this.effect);
+            this.sdkType.handles.delete(this.uid);
+            this.sdkType.effects.delete(this.uid);
+            this.effect = null;
+            this.handle = null;
+            this.loaded = false;
+            this.playing = false;
+        }
+
         SaveToJson() {
             return {
                 // data to be saved for savegames

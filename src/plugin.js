@@ -105,6 +105,7 @@ P_C.Type = class extends C3.SDKTypeBase {
 
     Draw(renderer, tickCount) {
         if (this.lastTickDraw === tickCount) return;
+        if (this.handles.size === 0) return;
         this.lastTickDraw = tickCount;
         renderer.EndBatch();
 

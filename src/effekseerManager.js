@@ -15,6 +15,10 @@ class EffekseerManager {
         await this.context.init(gl);
     }
 
+    releaseEffect(effect) {
+        this.context.releaseEffect(effect);
+    }
+
     async loadEffect(effectUrl) {
         return await new Promise((resolve, reject) => {
             let effect;
