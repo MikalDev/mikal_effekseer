@@ -112,6 +112,7 @@ try {
                 "c3runtime/instance.js",
                 "c3runtime/plugin.js",
                 "c3runtime/effekseerManager.js",
+                "c3runtime/effekseer.js",
                 "c3runtime/type.js",
                 "lang/en-US.json",
                 "aces.json",
@@ -667,6 +668,11 @@ try {
     fs.copyFileSync(
         path.join(__dirname, "src", "effekseerManager.js"),
         path.join(__dirname, "export", "c3runtime", "effekseerManager.js")
+    );
+
+    fs.copyFileSync(
+        path.join(__dirname, "src", "effekseer.js"),
+        path.join(__dirname, "export", "c3runtime", "effekseer.js")
     );
 
     if (config.info.defaultImageUrl) {

@@ -1,4 +1,4 @@
-import effekseer from "./effekseer.js";
+import { default as effekseer } from "./effekseer.js";
 
 class EffekseerManager {
     constructor() {
@@ -83,4 +83,4 @@ class EffekseerManager {
     }
 }
 
-export default EffekseerManager;
+export { EffekseerManager };

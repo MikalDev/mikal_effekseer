@@ -59,7 +59,7 @@ C3.Plugins[PLUGIN_INFO.id] = class extends (
     }
 };
 const P_C = C3.Plugins[PLUGIN_INFO.id];
-import EffekseerManager from "./effekseerManager.js";
+import { EffekseerManager } from "./effekseerManager.js";
 P_C.Type = class extends C3.SDKTypeBase {
     constructor(objectClass) {
         super(objectClass);
