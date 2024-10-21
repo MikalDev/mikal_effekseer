@@ -4,7 +4,7 @@ const Config = {
     addonType: "plugin",
     id: "mikal_effekseer",
     name: "effekseer",
-    version: "1.2.4",
+    version: "1.2.7",
     category: "3d",
     // "data-and-storage",
     // "form-controls",

@@ -10710,4 +10710,4 @@ if (typeof exports !== "undefined") {
         );
     });
 
-export default effekseer;
+// XXX export default effekseer;

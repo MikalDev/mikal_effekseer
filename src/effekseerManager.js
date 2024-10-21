@@ -1,5 +1,3 @@
-import { default as effekseer } from "./effekseer.js";
-
 class EffekseerManager {
     constructor() {
         this.context = null;
@@ -16,7 +14,9 @@ class EffekseerManager {
     }
 
     releaseEffect(effect) {
-        this.context.releaseEffect(effect);
+        if (this.context) {
+            this.context.releaseEffect(effect);
+        }
     }
 
     async loadEffect(effectUrl) {
@@ -83,4 +83,4 @@ class EffekseerManager {
     }
 }
 
-export { EffekseerManager };
+// XXX export { EffekseerManager };

@@ -13,16 +13,16 @@ SDK.Plugins[PLUGIN_INFO.id] = class extends SDK.IPluginBase {
         this._info.SetVersion(PLUGIN_INFO.version);
         this._info.SetCategory(PLUGIN_INFO.category);
         this._info.SetAuthor(PLUGIN_INFO.author);
-        this._info.SetC3RuntimeScripts([
-            "c3runtime/plugin.js",
-            "c3runtime/type.js",
-            "c3runtime/instance.js",
-            "c3runtime/conditions.js",
-            "c3runtime/actions.js",
-            "c3runtime/expressions.js",
-        ]);
-        this._info.AddC3RuntimeScript("c3runtime/effekseerManager.js");
-        this._info.AddC3RuntimeScript("c3runtime/effekseer.js");
+        //this._info.SetC3RuntimeScripts([
+        //     "c3runtime/plugin.js",
+        //     "c3runtime/type.js",
+        //     "c3runtime/instance.js",
+        //     "c3runtime/conditions.js",
+        //     "c3runtime/actions.js",
+        //     "c3runtime/expressions.js",
+        // ]);
+        // this._info.AddC3RuntimeScript("c3runtime/effekseerManager.js");
+        // this._info.AddC3RuntimeScript("c3runtime/effekseer.js");
 
         this._info.SetPluginType(
             PLUGIN_INFO.type === "object" ? "object" : "world"

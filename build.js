@@ -111,8 +111,8 @@ try {
                 "c3runtime/expressions.js",
                 "c3runtime/instance.js",
                 "c3runtime/plugin.js",
-                "c3runtime/effekseerManager.js",
-                "c3runtime/effekseer.js",
+                // "c3runtime/effekseerManager.js",
+                // "c3runtime/effekseer.js",
                 "c3runtime/type.js",
                 "lang/en-US.json",
                 "aces.json",
@@ -514,8 +514,8 @@ try {
         '  "c3runtime/actions.js",',
         '  "c3runtime/expressions.js",',
         "]);",
-        'this._info.AddC3RuntimeScript("c3runtime/effekseerManager.js");',
-        'this._info.AddC3RuntimeScript("c3runtime/effekseer.js");',
+        // 'this._info.AddC3RuntimeScript("c3runtime/effekseerManager.js");',
+        // 'this._info.AddC3RuntimeScript("c3runtime/effekseer.js");',
     ].join("\n");
 
     // write editor.js and replace "//<-- PLUGIN_INFO -->" with the plugin info
